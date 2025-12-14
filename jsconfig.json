@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "ES2024",
+        "allowImportingTsExtensions": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strict": true,
+        "lib": ["ES2024", "DOM"],
+        "moduleResolution": "node",
+       },
+    "exclude": [
+        "node_modules",
+        "**/node_modules/*"
+    ]
+}
