@@ -32,10 +32,9 @@ updateTime();
     }
 
 })()
-
 function showData(fetchedData, cityName = '', countryData = '') {
     console.log(fetchedData);
-    
+
     temperature.innerHTML = `${fetchedData.current_weather.temperature || 'undefined'} <span class="text-4xl font-bold -ms-2">${fetchedData.current_weather_units.temperature}</span>`;
     windSpeed.innerHTML = `${fetchedData.current_weather.windspeed} ${fetchedData.current_weather_units.windspeed}`;
 
