@@ -21,3 +21,10 @@ gsap.from('section', {
     stagger: 0.1,
 })
 
+gsap.from('.content', {
+    opacity: 0,
+    delay: 1.7,
+    duration: 0.3,
+    stagger: 0.05,
+    y: 30,
+})

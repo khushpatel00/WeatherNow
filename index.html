@@ -13,7 +13,6 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="src/all.min.css">
     <link rel="stylesheet" href="src/output.css">
 </head>
 
@@ -52,34 +51,34 @@
                 <div class=""></div>
                 <div class="flex justify-between items-center mb-4">
                     <div>
-                        <h2 class="text-3xl font-semibold text-gray-800" id="location">Berlin, DE</h2>
-                        <h3 class="text-xl text-gray-700" id="country">Germany</h3>
-                        <p class="text-gray-600" id="date">Monday, 12 July 2024</p>
+                        <h2 class="text-3xl font-semibold text-gray-800 content" id="location">Berlin, DE</h2>
+                        <h3 class="text-xl text-gray-700 content" id="country">Germany</h3>
+                        <p class="text-gray-600 content" id="date">Monday, 12 July 2024</p>
                     </div>
                     <div class="text-right">
-                        <h3 class="text-5xl font-bold text-gray-800 flex items-start justify-evenly gap-2"
+                        <h3 class="text-5xl font-bold text-gray-800 flex items-start justify-evenly gap-2 content"
                             id="temperature">22°C</h3>
-                        <p class="text-gray-600" id="weather-description">Rainy</p>
+                        <p class="text-gray-600 content" id="weather-description">Rainy</p>
                     </div>
                 </div>
                 <div class="flex justify-between items-center mt-auto">
                     <div class="text-center">
-                        <i class="fa-solid fa-wind text-gray-800"></i>
-                        <p class="text-gray-600" id="wind-speed">15 km/h</p>
-                        <p class="text-gray-600">Wind Speed</p>
+                        <i class=" fa-solid fa-wind text-gray-800 content"></i>
+                        <p class="text-gray-600 content" id="wind-speed">15 km/h</p>
+                        <p class="text-gray-600 content">Wind Speed</p>
                     </div>
                     <div class="text-center">
-                        <i class="fa-solid fa-tint text-gray-800"></i>
-                        <p class="text-gray-600" id="humidity">60%</p>
-                        <p class="text-gray-600">Humidity</p>
+                        <i class=" fa-solid fa-tint text-gray-800 content"></i>
+                        <p class="text-gray-600 content" id="humidity">60%</p>
+                        <p class="text-gray-600 content">Humidity</p>
                     </div>
                     <div class="text-center">
-                        <i class="fa-solid fa-cloud-rain text-gray-800"></i>
-                        <p class="text-gray-600" id="precipitation">10%</p>
-                        <p class="text-gray-600">Precipitation</p>
+                        <i class=" fa-solid fa-cloud-rain text-gray-800 content"></i>
+                        <p class="text-gray-600 content" id="precipitation">10%</p>
+                        <p class="text-gray-600 content">Precipitation</p>
                     </div>
                 </div>
-                <div class="absolute top-1/2 left-1/2 -translate-1/2 text-6xl font-bold text-black/80" id="currentTime">
+                <div class="absolute top-1/2 left-1/2 -translate-1/2 text-6xl font-bold text-black/80 content" id="currentTime">
                     00:00:00</div>
             </div>
         </div>
@@ -87,8 +86,36 @@
     </section>
 
     <section class="absolute top-0 right-0 w-screen xl:w-[40vw] lg:w-[40vw] h-screen flex justify-center items-center z-[60]" id="detailedSection">
-        <div class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-11/12 max-w-4xl h-[95vh] flex flex-col p-6 duration-500 justify-center items-center">
-            <p class="text-3xl font-bold content">Detailed INFO</p>
+        <div class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-11/12 max-w-4xl h-[95vh] flex flex-wrap p-6 duration-500 justify-between items-center">
+
+            
+            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
+                <div class="-rotate-45 basis-full text-center mb-3"><i class="fa-solid fa-location-arrow text-3xl" id="wind-direction"></i></div>
+                <p class="basis-full text-center" id="wind-direction-text"></p>
+                Wind Direction
+            </div>
+            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
+                <div class=" basis-full text-center mb-3"><p class="text-3xl" id="">⛰️</p></div>
+                <p class="basis-full text-center" id="elevation"></p>
+                Altitude
+            </div>
+            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
+                <div class=" basis-full text-center mb-3"><i class="fa-solid fa-location-arrow text-3xl" id="wind-direction"></i></div>
+                <p class="basis-full text-center" id="wind-direction-text"></p>
+                Wind Direction
+            </div>
+            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
+                <div class=" basis-full text-center mb-3"><i class="fa-solid fa-location-arrow text-3xl" id="wind-direction"></i></div>
+                <p class="basis-full text-center" id="wind-direction-text"></p>
+                Wind Direction
+            </div>
+            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
+                <div class=" basis-full text-center mb-3"><i class="fa-solid fa-location-arrow text-3xl" id="wind-direction"></i></div>
+                <p class="basis-full text-center" id="wind-direction-text"></p>
+                Wind Direction
+            </div>
+
+
         </div>
     </section>
 
@@ -98,8 +125,8 @@
 
     <script src="src/localLibraries/gsap.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script> -->
-    <script src="src/gsap.js"></script>
     <!-- <script src="src/convert.js"></script> -->
+    <!-- <script src="src/gsap.js"></script> -->
     <script src="src/fetch.js"></script>
     <script src="src/script.js"></script>
 

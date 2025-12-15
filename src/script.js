@@ -10,6 +10,10 @@ activestate = document.querySelector('#activestate');
 currentTime = document.querySelector('#currentTime');
 cityList = document.querySelector('#city-list');
 country = document.querySelector('#country');
+windDirection = document.querySelector('#wind-direction');
+windDirectionText = document.querySelector('#wind-direction-text');
+elevation = document.querySelector('#elevation');
+
 
 function updateTime() {
     const now = new Date();
@@ -50,6 +54,10 @@ function showData(fetchedData, cityName = '', countryData = '') {
         cityLocation.innerHTML = cityName;
     } else cityLocation.innerHTML = `Latitude: ${fetchedData.latitude}, Longitude: ${fetchedData.longitude}`;
     country.innerHTML = countryData;
+
+    windDirection.style.rotate = fetchedData.current_weather.winddirection + 'deg';
+    windDirectionText.innerHTML = fetchedData.current_weather.winddirection + fetchedData.current_weather_units.winddirection;
+    elevation.innerHTML = fetchedData.elevation;
 }
 
 input.addEventListener('keyup', async function (e) {
