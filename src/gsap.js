@@ -19,3 +19,20 @@ gsap.from('section', {
     delay: 1.5,
     y: 20,
 })
+// function gsapInputAnimate(action){
+//     if (action == 'show') {
+//         gsap.set('#citylist-parent', {display: 'block'});
+//         gsap.from('#citylist-parent', {
+//             opacity: 0,
+//             duration: 0.2,
+//             y: -20,
+//         });
+//     } else if (action == 'hide') {
+//         gsap.set('#citylist-parent', {display: 'none'});
+//         gsap.to('#citylist-parent', {
+//             opacity: 0,
+//             duration: 0.2,
+//             y: -20,
+//         });
+//     }
+// }
