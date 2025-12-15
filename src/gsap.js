@@ -17,7 +17,8 @@ gsap.from('section', {
     opacity: 0,
     duration: 0.5,
     delay: 1.5,
-    y: 20,
+    y: 50,
+    stagger: 0.1,
 })
 // function gsapInputAnimate(action){
 //     if (action == 'show') {

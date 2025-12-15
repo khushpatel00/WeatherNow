@@ -20,7 +20,7 @@
 <body class="bg-white overflow-hidden">
 
 
-    <div class="flex absolute top-0 left-0 duration-100 blur-2xl">
+    <div class="flex absolute top-0 left-0 duration-100 blur-md">
         <div class="bg-rose-200  h-screen duration-500 w-[60vw]" id="primary-bg"></div>
         <div class="bg-pink-200  h-screen w-[40vw]" id="secondary-bg"></div>
     </div>
@@ -32,24 +32,25 @@
 
     <!-- <img autoplay loop muted controls class="weather-effect fog absolute top-0 left-0 w-screen h-screen z-50" src="src/images/Fog.gif" id="activestate"> </img> -->
     <video autoplay loop muted
-        class="weather-effect fog absolute top-0 left-0 bg-neutral-900 w-screen h-screen z-50 scale-110"
+        class="weather-effect fog absolute top-0 left-0 bg-neutral-900 w-screen h-screen z-50 scale-110 object-cover"
         src="src/images/rain2.mp4" id="activestate"> </video>
 
-    <section class="absolute top-0 left-0 w-screen h-screen flex justify-center items-center z-40">
+    <section class="absolute top-0 left-0 w-[60vw] h-screen flex justify-center items-center z-40">
         <div class="">
             <div class="flex justify-center items-center relative">
                 <p class="text-2xl font-bold text-black/50">City:</p>
 
                 <div class="relative z-20">
-                    <input type="text" class="bg-white/50 rounded-lg p-1 py-2 mx-3">
-                    <div id="citylist-parent" class="hidden absolute bg-white/80 backdrop-blur-xs rounded-lg py-2 top-0 left-0 translate-y-1/5 w-full h-auto">
+                    <input type="text" class="bg-white/50 rounded-lg p-1 py-2 mx-3" />
+                    <div id="citylist-parent"
+                        class="hidden absolute bg-white/80 backdrop-blur-xs rounded-lg py-2 top-0 left-0 translate-y-1/5 w-full h-auto">
                         <ul id="city-list"></ul>
                     </div>
                 </div>
 
 
             </div>
-            <div class="bg-white/70 backdrop-blur-md relative shadow-2xl rounded-3xl w-[90vw] max-w-4xl h-[70vh] flex flex-col p-6 duration-500 translate-y-10"
+            <div class="bg-white/70 backdrop-blur-md relative shadow-2xl rounded-2xl w-[55vw] max-w-4xl h-[70vh] flex flex-col p-6 duration-500 translate-y-10"
                 id="weather-card">
                 <div class="flex justify-between items-center mb-4">
                     <div>
@@ -80,11 +81,15 @@
                         <p class="text-gray-600">Precipitation</p>
                     </div>
                 </div>
-                <div class="absolute top-1/2 left-1/2 -translate-1/2 text-6xl font-bold text-black/80" id="currentTime">
-                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-1/2 text-6xl font-bold text-black/80" id="currentTime">00:00:00</div>
             </div>
         </div>
 
+    </section>
+
+    <section class="absolute top-0 right-0 w-[40vw] h-screen flex justify-center items-center z-[60]">
+        <div class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-[35vw] max-w-4xl h-[95vh] flex flex-col p-6 duration-500">
+        </div>
     </section>
 
 
@@ -93,9 +98,9 @@
 
     <script src="src/localLibraries/gsap.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script> -->
-    <script src="src/fetch.js"></script>
     <script src="src/gsap.js"></script>
-    <script src="src/convert.js"></script>
+    <!-- <script src="src/convert.js"></script> -->
+    <script src="src/fetch.js"></script>
     <script src="src/script.js"></script>
 
 
