@@ -53,7 +53,7 @@
             </div>
             <div class="bg-white/70 backdrop-blur-md relative shadow-2xl rounded-2xl w-[90vw] xl:w-[55vw] lg:w-[55vw]  max-w-4xl h-[70vh] flex flex-col p-6 duration-500 translate-y-10"
                 id="weather-card">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 "><div class="text-3xl relative mt-3 "id="menu"><span></span><span></span><span></span></div></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 "><div class="text-3xl relative inline-flex gap-[3px] cursor-pointer w-auto h-5 items-center"id="menu"><span></span><span></span><span></span></div></div>
                 <div class="flex justify-between items-center mb-4">
                     <div>
                         <h2 class="text-3xl font-semibold text-gray-800 content" id="location">Berlin, DE</h2>
@@ -91,12 +91,16 @@
 
     </section>
 
-    <section class="absolute invisible top-0 right-0 w-screen xl:w-[40vw] lg:w-[40vw] h-screen flex justify-center items-center z-[60]"
+    <section class="absolute top-0 right-0 w-screen xl:w-[40vw] lg:w-[40vw] h-screen flex justify-center items-center z-[60]"
         id="detailedSection">
-        <div
-            class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-11/12 max-w-4xl h-[95vh] flex flex-wrap p-6 px-4  duration-500 justify-evenly content-start items-center">
+        <div class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-11/12 max-w-4xl h-[95vh] flex flex-wrap p-6 px-4  duration-500 justify-evenly content-start items-center">
 
-
+            <div class="absolute top-0 left-0 m-3.5 mt-4 cursor-pointer my-2 w-5 h-5">
+                <div class="relative w-5 h-5 mt-4 -translate-y-1/2" id="close-icon">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
             <div
                 class="bg-white/30 my-3  px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
                 <div class="basis-full text-center mb-3" id="wind-direction">
@@ -139,9 +143,9 @@
     <script src="src/localLibraries/gsap.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script> -->
     <!-- <script src="src/convert.js"></script> -->
-    <script src="src/gsap.js"></script>
     <script src="src/fetch.js"></script>
     <script src="src/script.js"></script>
+    <script src="src/gsap.js"></script>
 
 
 </body>

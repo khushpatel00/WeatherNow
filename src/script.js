@@ -16,7 +16,9 @@ elevation = document.querySelector('#elevation');
 daynighttime = document.querySelector('#daynighttime');
 daynighttimeText = document.querySelector('#daynighttime-text');
 timezone = document.querySelector('#timezone');
-
+menu = document.querySelector('#menu');
+closeIcon = document.querySelector('#close-icon');
+console.log(closeIcon)
 
 function updateTime() {
     const now = new Date();
@@ -61,15 +63,15 @@ function showData(fetchedData, cityName = '', countryData = '') {
     windDirection.style.rotate = fetchedData.current_weather.winddirection + 'deg';
     windDirectionText.innerHTML = fetchedData.current_weather.winddirection + fetchedData.current_weather_units.winddirection;
     elevation.innerHTML = fetchedData.elevation;
-    if(fetchedData.current_weather.is_day){
+    if (fetchedData.current_weather.is_day) {
         daynighttime.classList = 'ph-thin ph-sun';
         daynighttimeText.innerHTML = 'Day Time'
     }
-    else{
+    else {
         daynighttime.classList = 'ph-thin ph-moon-stars';
         daynighttimeText.innerHTML = 'Night Time';
-    } 
-    timezone.innerHTML = fetchedData.timezone; 
+    }
+    timezone.innerHTML = fetchedData.timezone;
 }
 
 input.addEventListener('keyup', async function (e) {

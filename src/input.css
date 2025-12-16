@@ -29,14 +29,6 @@
     border: 1px solid rgba(255, 255, 255, 0.21);
 }
 
-#menu {
-    display: flex;
-    gap: 3px;
-    cursor: pointer;
-    width: fit;
-    height: 10px;
-}
-
 #menu span {
     width: 4px;
     height: 4px;
@@ -45,8 +37,27 @@
     transition: 0.2s all;
 }
 
-#menu:hover span {
-    width: 7px;
-    height: 7px;
-    border: 1.5px solid black;
+#close-icon span:first-child{
+    position: absolute;
+    content: '';
+    width: 20px;
+    border-radius: 5px; 
+    height: 1.5px;
+    top: 0;
+    left: 0;
+    /* transform: translateX(50%); */
+    rotate: 45deg;
+    background-color: black;
 }
+#close-icon span:last-child{
+    position: absolute;
+    content: '';
+    width: 20px;
+    border-radius: 5px; 
+    height: 1.5px;
+    top: 0;
+    left: 0;
+    /* transform: translateX(50%); */
+    rotate: -45deg; 
+    background-color: black;
+} 
