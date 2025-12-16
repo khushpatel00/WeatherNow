@@ -13,6 +13,11 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
         rel="stylesheet">
+    <!-- <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" /> -->
+    <!-- <link rel="stylesheet" href="src/materialIcon.css" /> -->
+
+    <link rel="stylesheet" href="src/phosphor.css">
     <link rel="stylesheet" href="src/output.css">
 </head>
 
@@ -48,7 +53,7 @@
             </div>
             <div class="bg-white/70 backdrop-blur-md relative shadow-2xl rounded-2xl w-[90vw] xl:w-[55vw] lg:w-[55vw]  max-w-4xl h-[70vh] flex flex-col p-6 duration-500 translate-y-10"
                 id="weather-card">
-                <div class=""></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 "><div class="text-3xl relative mt-3 "id="menu"><span></span><span></span><span></span></div></div>
                 <div class="flex justify-between items-center mb-4">
                     <div>
                         <h2 class="text-3xl font-semibold text-gray-800 content" id="location">Berlin, DE</h2>
@@ -63,59 +68,67 @@
                 </div>
                 <div class="flex justify-between items-center mt-auto">
                     <div class="text-center">
-                        <i class=" fa-solid fa-wind text-gray-800 content"></i>
+                        <i class="text-2xl ph-thin ph-wind text-gray-800 content"></i>
                         <p class="text-gray-600 content" id="wind-speed">15 km/h</p>
                         <p class="text-gray-600 content">Wind Speed</p>
                     </div>
                     <div class="text-center">
-                        <i class=" fa-solid fa-tint text-gray-800 content"></i>
+                        <i class="text-2xl ph-thin ph-drop-half-bottom text-gray-800 content"></i>
                         <p class="text-gray-600 content" id="humidity">60%</p>
                         <p class="text-gray-600 content">Humidity</p>
                     </div>
                     <div class="text-center">
-                        <i class=" fa-solid fa-cloud-rain text-gray-800 content"></i>
+                        <i class="text-2xl ph-thin ph-cloud-rain text-gray-800 content"></i>
                         <p class="text-gray-600 content" id="precipitation">10%</p>
                         <p class="text-gray-600 content">Precipitation</p>
                     </div>
                 </div>
-                <div class="absolute top-1/2 left-1/2 -translate-1/2 text-6xl font-bold text-black/80 content" id="currentTime">
+                <div class="absolute text-center top-1/2 left-1/2 -translate-1/2 text-6xl font-bold text-black/80 content-notranslate"
+                    id="currentTime">
                     00:00:00</div>
             </div>
         </div>
 
     </section>
 
-    <section class="absolute top-0 right-0 w-screen xl:w-[40vw] lg:w-[40vw] h-screen flex justify-center items-center z-[60]" id="detailedSection">
-        <div class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-11/12 max-w-4xl h-[95vh] flex flex-wrap p-6 duration-500 justify-between items-center">
-
-            
-            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
-                <div class="-rotate-45 basis-full text-center mb-3"><i class="fa-solid fa-location-arrow text-3xl" id="wind-direction"></i></div>
-                <p class="basis-full text-center" id="wind-direction-text"></p>
-                Wind Direction
-            </div>
-            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
-                <div class=" basis-full text-center mb-3"><p class="text-3xl" id="">⛰️</p></div>
-                <p class="basis-full text-center" id="elevation"></p>
-                Altitude
-            </div>
-            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
-                <div class=" basis-full text-center mb-3"><i class="fa-solid fa-location-arrow text-3xl" id="wind-direction"></i></div>
-                <p class="basis-full text-center" id="wind-direction-text"></p>
-                Wind Direction
-            </div>
-            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
-                <div class=" basis-full text-center mb-3"><i class="fa-solid fa-location-arrow text-3xl" id="wind-direction"></i></div>
-                <p class="basis-full text-center" id="wind-direction-text"></p>
-                Wind Direction
-            </div>
-            <div class="bg-white/30 px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
-                <div class=" basis-full text-center mb-3"><i class="fa-solid fa-location-arrow text-3xl" id="wind-direction"></i></div>
-                <p class="basis-full text-center" id="wind-direction-text"></p>
-                Wind Direction
-            </div>
+    <section class="absolute invisible top-0 right-0 w-screen xl:w-[40vw] lg:w-[40vw] h-screen flex justify-center items-center z-[60]"
+        id="detailedSection">
+        <div
+            class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-11/12 max-w-4xl h-[95vh] flex flex-wrap p-6 px-4  duration-500 justify-evenly content-start items-center">
 
 
+            <div
+                class="bg-white/30 my-3  px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
+                <div class="basis-full text-center mb-3" id="wind-direction">
+                    <i class="ph-thin ph-arrow-up text-3xl rotate-180 content"></i>
+                </div>
+                <p class="basis-full content text-center" id="wind-direction-text"></p>
+                <span class="content">Wind Direction</span>
+            </div>
+            <div
+                class="bg-white/30 my-3  px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
+                <div class="basis-full text-center mb-3">
+                    <i class="ph-thin ph-globe-hemisphere-east text-3xl rotate-180 content"></i>
+                </div>
+                <p class="basis-full text-center content" id="timezone">GMT</p>
+            </div>
+            <div
+                class="bg-white/30 my-3  px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
+                <div class="basis-full text-center mb-3">
+                    <i class="ph-thin ph-mountains text-3xl content"></i>
+                </div>
+                <p class="basis-full text-center content" id="elevation"></p>
+                <span class="content">Altitude</span>
+            </div>
+            <div
+                class="bg-white/30 my-3  px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
+                <div class=" basis-full text-center mb-3 text-3xl content">
+                    <i class="ph-thin ph-sun" id="daynighttime"></i>
+                </div>
+                <p class="basis-full text-center content" id="daynighttime-text">
+                    <span class="content">Day Time</span>
+                </p>
+            </div>
         </div>
     </section>
 
@@ -126,7 +139,7 @@
     <script src="src/localLibraries/gsap.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script> -->
     <!-- <script src="src/convert.js"></script> -->
-    <!-- <script src="src/gsap.js"></script> -->
+    <script src="src/gsap.js"></script>
     <script src="src/fetch.js"></script>
     <script src="src/script.js"></script>
 

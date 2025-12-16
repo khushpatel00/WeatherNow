@@ -28,3 +28,14 @@ gsap.from('.content', {
     stagger: 0.05,
     y: 30,
 })
+
+gsap.from('.content-notranslate', {
+    opacity: 0,
+    delay: 2,
+    duration: 0.3,
+    stagger: 0.05,
+})
+
+document.querySelector('#menu').addEventListener('hover', () => {
+    console.log('hovered on menu')
+})

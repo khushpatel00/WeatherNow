@@ -23,8 +23,30 @@
 
 #weather-card {
     /* background: rgba(255, 255, 255, 0); */
-    border-radius: 16px; 
+    border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.21);
+}
+
+#menu {
+    display: flex;
+    gap: 3px;
+    cursor: pointer;
+    width: fit;
+    height: 10px;
+}
+
+#menu span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    border: 2px solid black;
+    transition: 0.2s all;
+}
+
+#menu:hover span {
+    width: 7px;
+    height: 7px;
+    border: 1.5px solid black;
 }
