@@ -25,8 +25,8 @@
 
 
     <div class="flex absolute top-0 left-0 duration-100 blur-md">
-        <div class="bg-rose-200  h-screen duration-500 w-screen xl:w-[60vw] lg:w-[60vw]" id="primary-bg"></div>
-        <div class="bg-pink-200  h-screen w-0 xl:w-[40vw] lg:w-[40vw] " id="secondary-bg"></div>
+        <div class="bg-rose-200 dark:bg-emerald-700/50  h-screen duration-500 w-screen xl:w-[60vw] lg:w-[60vw]" id="primary-bg"></div>
+        <div class="bg-pink-200 dark:bg-sky-600/50  h-screen w-0 xl:w-[40vw] lg:w-[40vw] " id="secondary-bg"></div>
     </div>
     <div class="z-30 absolute top-0 left-0 h-screen w-screen bg-black/20"></div>
 
@@ -61,10 +61,10 @@
                         <p class="text-gray-600 content" id="date">Monday, 12 July 2024</p>
                     </div>
                     <div class="text-right">
-                        <h3 class="text-5xl font-bold text-gray-800 flex items-start justify-evenly gap-2 content"
-                            id="temperature">22°C</h3>
+                        <h3 class="text-5xl font-bold text-gray-800 flex items-start justify-end gap-2 content" id="temperature">22°C</h3>
+                        <h3 class="text-3xl font-light text-gray-800 flex items-start justify-end gap-2 content" id="apperant-temperature"><span class="text-xl content">apperant: </span> 22°C</h3>
                         <p class="text-gray-600 content" id="weather-description">Rainy</p>
-                    </div>
+                    </div> 
                 </div>
                 <div class="flex justify-between items-center mt-auto">
                     <div class="text-center">
@@ -114,7 +114,8 @@
                 <div class="basis-full text-center mb-3">
                     <i class="ph-thin ph-globe-hemisphere-east text-3xl rotate-180 content"></i>
                 </div>
-                <p class="basis-full text-center content" id="timezone">GMT</p>
+                <p class="basis-full text-center content" id="timezone"></p>
+                <p class="basis-full text-center content" id="timezoneAbbreviation">GMT</p>
             </div>
             <div
                 class="bg-white/30 my-3  px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
@@ -145,7 +146,7 @@
     <!-- <script src="src/convert.js"></script> -->
     <script src="src/fetch.js"></script>
     <script src="src/script.js"></script>
-    <script src="src/gsap.js"></script>
+    <!-- <script src="src/gsap.js"></script> -->
 
 
 </body>

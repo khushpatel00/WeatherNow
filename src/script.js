@@ -2,6 +2,7 @@ input = document.querySelector('input[type="text"]');
 cityLocation = document.querySelector('#location');
 dateElement = document.querySelector('#date');
 temperature = document.querySelector('#temperature');
+apperantTemperature = document.querySelector('#apperant-temperature');
 weatherDescription = document.querySelector('#weather-description');
 windSpeed = document.querySelector('#wind-speed');
 humidity = document.querySelector('#humidity');
@@ -18,7 +19,10 @@ daynighttimeText = document.querySelector('#daynighttime-text');
 timezone = document.querySelector('#timezone');
 menu = document.querySelector('#menu');
 closeIcon = document.querySelector('#close-icon');
-console.log(closeIcon)
+timezoneAbbreviation = document.querySelector('#timezoneAbbreviation')
+
+
+
 
 function updateTime() {
     const now = new Date();
@@ -33,7 +37,7 @@ updateTime();
 
     try {
         const data = await fetchWeather(); // default
-        console.log(data);
+        console.log(data); 
         showData(data, 'Berlin, DE', 'Germeny');
 
     } catch (error) {
@@ -44,10 +48,11 @@ updateTime();
 function showData(fetchedData, cityName = '', countryData = '') {
     console.log(fetchedData);
 
-    temperature.innerHTML = `${fetchedData.current_weather.temperature || 'undefined'} <span class="text-4xl font-bold -ms-2">${fetchedData.current_weather_units.temperature}</span>`;
-    windSpeed.innerHTML = `${fetchedData.current_weather.windspeed} ${fetchedData.current_weather_units.windspeed}`;
+    temperature.innerHTML = `${fetchedData.current.temperature_2m || 'undefined'} <span class="text-4xl font-bold -ms-2">${fetchedData.current_units.temperature_2m}</span>`;
+    apperantTemperature.innerHTML = `<span class="text-xl content">apperant: </span>${fetchedData.current.apparent_temperature || 'undefined'}${fetchedData.current_units.apparent_temperature}`;
+    windSpeed.innerHTML = `${fetchedData.current.wind_speed_10m} ${fetchedData.current_units.wind_speed_10m}`;
 
-    const date = new Date(fetchedData.current_weather.time);
+    const date = new Date(fetchedData.current.time);
     dateElement.innerHTML = new Intl.DateTimeFormat("en-US", {
         weekday: "long",
         year: "numeric",
@@ -59,11 +64,11 @@ function showData(fetchedData, cityName = '', countryData = '') {
         cityLocation.innerHTML = cityName;
     } else cityLocation.innerHTML = `Latitude: ${fetchedData.latitude}, Longitude: ${fetchedData.longitude}`;
     country.innerHTML = countryData;
-
-    windDirection.style.rotate = fetchedData.current_weather.winddirection + 'deg';
-    windDirectionText.innerHTML = fetchedData.current_weather.winddirection + fetchedData.current_weather_units.winddirection;
-    elevation.innerHTML = fetchedData.elevation;
-    if (fetchedData.current_weather.is_day) {
+    
+    windDirection.style.rotate = fetchedData.current.wind_direction_10m + 'deg';
+    windDirectionText.innerHTML = fetchedData.current.wind_direction_10m + fetchedData.current_units.wind_direction_10m;
+    elevation.innerHTML = fetchedData.elevation + ' m';
+    if (fetchedData.current.is_day) {
         daynighttime.classList = 'ph-thin ph-sun';
         daynighttimeText.innerHTML = 'Day Time'
     }
@@ -72,6 +77,7 @@ function showData(fetchedData, cityName = '', countryData = '') {
         daynighttimeText.innerHTML = 'Night Time';
     }
     timezone.innerHTML = fetchedData.timezone;
+    timezoneAbbreviation.innerHTML = fetchedData.timezone_abbreviation;
 }
 
 input.addEventListener('keyup', async function (e) {
