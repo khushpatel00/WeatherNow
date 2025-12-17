@@ -1,8 +1,18 @@
-gsap.set('#detailedSection', {visibility: 'hidden'})
-gsap.defaults({
-    autoRound: false,
-    force3D: true
-});
+if (window.innerWidth < 1024) {
+    gsap.set('#detailedSection', { visibility: 'hidden', opacity: 0 })
+}
+else {
+    gsap.set('#detailedSection', { visibility: 'visible', opacity: 1 })
+}
+window.addEventListener('resize', () => {
+    console.log(window.innerWidth);
+    if (window.innerWidth < 1024) {
+        gsap.set('#detailedSection', { visibility: 'hidden', opacity: 0 })
+    }
+    else {
+        gsap.set('#detailedSection', { visibility: 'visible', opacity: 1 })
+    }
+})
 
 gsap.from('#intro', {
     opacity: 0,
@@ -67,19 +77,36 @@ menu.addEventListener('mouseleave', () => {
     })
 });
 menu.addEventListener('click', () => {
-    gsap.set('#detailedSection', {visibility: 'visible'})
-    gsap.from('#detailedSection', {
+    gsap.set('#detailedSection', { visibility: 'visible', opacity: 1 });
+    gsap.fromTo('#detailedSection', {
         y: '50%',
         duration: 0.3,
+    }, {
+        y: 0
     })
-}) 
-closeIcon.addEventListener('click', () => {
-    gsap.to('#close-icon span', {
-        // opacity: 0, 
+    gsap.to('#close-icon .line1', {
+        rotate: '45deg',
         duration: 0.2,
-        rotate: 0,
-        stagger: 0.08,
+        delay: 0.5,
+    })
+    gsap.to('#close-icon .line2', {
+        rotate: '-45deg',
+        duration: 0.2,
+        delay: 0.58,
     })
 })
-
-
+closeIcon.addEventListener('click', () => {
+    setTimeout(gsap.to('#close-icon span', {
+        // opacity: 0, 
+        duration: 0.2,
+        rotate: '0deg',
+        stagger: 0.08,
+    }), 200)
+    gsap.to('#detailedSection', {
+        y: '50%',
+        delay: 0.2,
+        duration: 0.3,
+        opacity: 0,
+    })
+    gsap.set('#detailedSection', { visibility: 'invisible' });
+})
