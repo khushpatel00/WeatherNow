@@ -7,14 +7,14 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-emerald-700: oklch(50.8% 0.118 165.612);
-    --color-sky-600: oklch(58.8% 0.158 241.966);
     --color-pink-200: oklch(89.9% 0.061 343.231);
     --color-rose-200: oklch(89.2% 0.058 10.001);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
+    --color-zinc-500: oklch(55.2% 0.016 285.938);
     --color-neutral-300: oklch(87% 0 0);
+    --color-neutral-700: oklch(37.1% 0 0);
     --color-neutral-900: oklch(20.5% 0 0);
     --color-black: #000;
     --color-white: #fff;
@@ -623,20 +623,14 @@
       background-color: var(--color-black);
     }
   }
-  .dark\:bg-emerald-700\/50 {
+  .dark\:bg-neutral-700 {
     &:is(.dark *) {
-      background-color: color-mix(in srgb, oklch(50.8% 0.118 165.612) 50%, transparent);
-      @supports (color: color-mix(in lab, red, red)) {
-        background-color: color-mix(in oklab, var(--color-emerald-700) 50%, transparent);
-      }
+      background-color: var(--color-neutral-700);
     }
   }
-  .dark\:bg-sky-600\/50 {
+  .dark\:bg-zinc-500 {
     &:is(.dark *) {
-      background-color: color-mix(in srgb, oklch(58.8% 0.158 241.966) 50%, transparent);
-      @supports (color: color-mix(in lab, red, red)) {
-        background-color: color-mix(in oklab, var(--color-sky-600) 50%, transparent);
-      }
+      background-color: var(--color-zinc-500);
     }
   }
 }

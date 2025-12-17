@@ -22,8 +22,6 @@ closeIcon = document.querySelector('#close-icon');
 timezoneAbbreviation = document.querySelector('#timezoneAbbreviation')
 
 
-
-
 function updateTime() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, '0');
@@ -71,13 +69,27 @@ function showData(fetchedData, cityName = '', countryData = '') {
     if (fetchedData.current.is_day) {
         daynighttime.classList = 'ph-thin ph-sun';
         daynighttimeText.innerHTML = 'Day Time'
+        document.querySelector('html').classList = '';
     }
     else {
         daynighttime.classList = 'ph-thin ph-moon-stars';
         daynighttimeText.innerHTML = 'Night Time';
+        document.querySelector('html').classList = 'dark';
     }
     timezone.innerHTML = fetchedData.timezone;
     timezoneAbbreviation.innerHTML = fetchedData.timezone_abbreviation;
+    fetchedData.current.snowfall = 1
+    if(fetchedData.current.rain){
+        document.querySelector('video#activestate').src = 'src/images/rain.mp4';
+    }
+    if(fetchedData.current.showers){
+        document.querySelector('video#activestate').src = 'src/images/water_droplets.mp4';
+        
+    }
+    if(fetchedData.current.snowfall){
+        document.querySelector('video#activestate').src = 'src/images/snowfall.mp4';
+    }
+
 }
 
 input.addEventListener('keyup', async function (e) {
