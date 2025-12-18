@@ -78,13 +78,11 @@ function showData(fetchedData, cityName = '', countryData = '') {
     }
     timezone.innerHTML = fetchedData.timezone;
     timezoneAbbreviation.innerHTML = fetchedData.timezone_abbreviation;
-    fetchedData.current.snowfall = 1
     if(fetchedData.current.rain){
         document.querySelector('video#activestate').src = 'src/images/rain.mp4';
     }
     if(fetchedData.current.showers){
         document.querySelector('video#activestate').src = 'src/images/water_droplets.mp4';
-        
     }
     if(fetchedData.current.snowfall){
         document.querySelector('video#activestate').src = 'src/images/snowfall.mp4';
