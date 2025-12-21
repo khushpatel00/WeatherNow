@@ -88,6 +88,8 @@ function showData(fetchedData, cityName = '', countryData = '') {
         document.querySelector('video#activestate').src = 'src/images/snowfall.mp4';
     }
 
+    weatherDescription.innerHTML = `${weathercode(fetchedData.current.weather_code)}`
+
 }
 
 input.addEventListener('keyup', async function (e) {
