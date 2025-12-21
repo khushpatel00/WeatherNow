@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> </title>
-    <link rel="shortcut icon" href="src/images/favicon.png" type="image/x-icon">
+    <title>WeatherNow</title>
+<!--    <link rel="shortcut icon" href="src/images/favicon.png" type="image/x-icon">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -13,8 +13,8 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="src/phosphor.css">
-    <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="./src/phosphor.css">
+    <link rel="stylesheet" href="./src/output.css">
 </head>
 
 <body class="bg-white dark:bg-black overflow-hidden">
@@ -40,7 +40,8 @@
             <div class="flex justify-center items-center relative basis-full">
                 <p class="text-2xl font-bold text-black/50">City:</p>
                 <div class="relative z-20">
-                    <input type="text" class="bg-white/50 rounded-lg p-1 py-2 mx-3" />
+                    <label for="citylist-input"></label> 
+                    <input type="text" class="bg-white/50 rounded-lg p-1 py-2 mx-3" id="citylist-input" />
                     <div id="citylist-parent"
                         class="hidden absolute bg-white/80 backdrop-blur-xs rounded-lg py-2 top-0 left-0 translate-y-1/5 w-full h-auto">
                         <ul id="city-list"></ul>
@@ -49,12 +50,12 @@
             </div>
             <div class="bg-white/70 backdrop-blur-md relative shadow-2xl rounded-2xl w-[90vw] xl:w-[55vw] lg:w-[55vw]  max-w-4xl h-[70vh] flex flex-col p-6 duration-500 translate-y-10"
                 id="weather-card">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 "><div class="text-3xl relative inline-flex gap-[3px] cursor-pointer w-auto h-5 items-center"id="menu"><span></span><span></span><span></span></div></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 "><div class="text-3xl relative inline-flex gap-[3px] cursor-pointer w-auto h-5 items-center" id="menu"><span></span><span></span><span></span></div></div>
                 <div class="flex justify-between items-center mb-4">
                     <div>
                         <h2 class="text-3xl font-semibold text-gray-800 content" id="location">Berlin, DE</h2>
                         <h3 class="text-xl text-gray-700 content" id="country">Germany</h3>
-                        <p class="text-gray-600 content" id="date">Monday, 12 July 2024</p>
+                        <p class="text-gray-600 content" id="date">Friday, 12 July 2024</p>
                     </div>
                     <div class="text-right">
                         <h3 class="text-5xl font-bold text-gray-800 flex items-start justify-end gap-2 content" id="temperature">22°C</h3>
@@ -87,7 +88,7 @@
 
     </section>
 
-    <section class="absolute  top-0 right-0 w-screen xl:w-[40vw] lg:w-[40vw] h-screen flex justify-center items-center z-[60]"
+    <section class="absolute hidden top-0 right-0 w-screen xl:w-[40vw] lg:w-[40vw] h-screen flex justify-center items-center z-[60]"
         id="detailedSection">
         <div class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-11/12 max-w-4xl h-[95vh] flex flex-wrap p-6 px-4  duration-500 justify-evenly content-start items-center">
 
@@ -137,13 +138,13 @@
 
 
 
-    <script src="src/localLibraries/gsap.min.js"></script>
+    <script src="./src/localLibraries/gsap.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script> -->
-    <!-- <script src="src/convert.js"></script> -->
-    <script src="src/fetch.js"></script>
-    <script src="src/script.js"></script>
-    <script src="src/weathercode.js"></script>
-    <script src="src/gsap.js"></script>
+    <!-- <script src="./src/convert.js"></script> -->
+    <script src="./src/fetch.js"></script>
+    <script src="./src/script.js"></script>
+    <script src="./src/weathercode.js"></script>
+    <script src="./src/gsap.js"></script>
 
 
 </body>

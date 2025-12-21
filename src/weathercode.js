@@ -1,4 +1,4 @@
-function weathercode(wcode, ) {
+function weathercode(wcode) {
     wcode = parseInt(wcode);
     if(wcode == 0)  return 'Clear sky'
     if(wcode == 1)  return 'Mainly clear'
@@ -28,4 +28,6 @@ function weathercode(wcode, ) {
     if(wcode == 95) return 'Slight-Moderate Thunderstorm'
     if(wcode == 96) return 'Slight Hail Thunderstorm'
     if(wcode == 99) return 'Heavy Hail Thunderstorm'
+    
+    return 'Failed to Fetch Weather Condition';
 }

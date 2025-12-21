@@ -20,22 +20,49 @@ timezone = document.querySelector('#timezone');
 menu = document.querySelector('#menu');
 closeIcon = document.querySelector('#close-icon');
 timezoneAbbreviation = document.querySelector('#timezoneAbbreviation')
+timeclock = null;
+
+// function updateTime() {
+//     const now = new Date("GMT+1");
+//     const hours = String(now.getHours()).padStart(2, '0');
+//     const minutes = String(now.getMinutes()).padStart(2, '0');
+//     const seconds = String(now.getSeconds()).padStart(2, '0');
+//     currentTime.textContent = `${hours}:${minutes}:${seconds}`;
+// }
 
 
-function updateTime() {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    currentTime.textContent = `${hours}:${minutes}:${seconds}`;
+
+
+gmt = 'GMT+1:30'
+gmtinseconds = gmt.split('+').pop().split(':')
+console.log(gmtinseconds[0] * 60 + gmtinseconds[1]);
+
+
+
+
+
+function updateTime(timezone) {
+    clearInterval(timeclock);
+    timeclock = setInterval(() => {
+        var now = new Date();
+        var time = now.toLocaleString('en-US', {
+            timeZone: timezone,
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+        });
+        currentTime.innerHTML = time.split(',').pop().split(' ')[0];
+    }, 1000)
 }
-setInterval(updateTime, 1000);
-updateTime();
+
+
+
+
 (async () => {
 
     try {
         const data = await fetchWeather(); // default
-        console.log(data); 
+        console.log(data);
         showData(data, 'Berlin, DE', 'Germeny');
 
     } catch (error) {
@@ -62,7 +89,7 @@ function showData(fetchedData, cityName = '', countryData = '') {
         cityLocation.innerHTML = cityName;
     } else cityLocation.innerHTML = `Latitude: ${fetchedData.latitude}, Longitude: ${fetchedData.longitude}`;
     country.innerHTML = countryData;
-    
+
     windDirection.style.rotate = fetchedData.current.wind_direction_10m + 'deg';
     windDirectionText.innerHTML = fetchedData.current.wind_direction_10m + fetchedData.current_units.wind_direction_10m;
     elevation.innerHTML = fetchedData.elevation + ' m';
@@ -78,18 +105,19 @@ function showData(fetchedData, cityName = '', countryData = '') {
     }
     timezone.innerHTML = fetchedData.timezone;
     timezoneAbbreviation.innerHTML = fetchedData.timezone_abbreviation;
-    if(fetchedData.current.rain){
+    if (fetchedData.current.rain) {
         document.querySelector('video#activestate').src = 'src/images/rain.mp4';
     }
-    if(fetchedData.current.showers){
+    if (fetchedData.current.showers) {
         document.querySelector('video#activestate').src = 'src/images/water_droplets.mp4';
     }
-    if(fetchedData.current.snowfall){
+    if (fetchedData.current.snowfall) {
         document.querySelector('video#activestate').src = 'src/images/snowfall.mp4';
     }
 
     weatherDescription.innerHTML = `${weathercode(fetchedData.current.weather_code)}`
-
+    clearInterval(timeclock);
+    updateTime(fetchedData.timezone);
 }
 
 input.addEventListener('keyup', async function (e) {
