@@ -105,6 +105,7 @@ function showData(fetchedData, cityName = '', countryData = '') {
     }
     timezone.innerHTML = fetchedData.timezone;
     timezoneAbbreviation.innerHTML = fetchedData.timezone_abbreviation;
+    
     if (fetchedData.current.rain) {
         document.querySelector('video#activestate').src = 'src/images/rain.mp4';
     }

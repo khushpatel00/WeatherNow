@@ -110,3 +110,18 @@ closeIcon.addEventListener('click', () => {
     })
     gsap.set('#detailedSection', { visibility: 'invisible' });
 })
+document.querySelector('#gear-icon').addEventListener('mouseenter', () => {
+    gsap.to('#gear-icon', {
+        rotate: '30deg',
+        duration: 0.5,
+        opacity: 1,
+        x: -1,
+    }) 
+}); document.querySelector('#gear-icon').addEventListener('mouseleave', () => {
+    gsap.to('#gear-icon', {
+        rotate: '0deg',
+        duration: 0.5,
+        opacity: 0.25,
+        x: 0,
+    }) 
+}); 
