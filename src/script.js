@@ -62,6 +62,8 @@ function updateTime(timezone) {
 
     try {
         const data = await fetchWeather(); // default
+
+        
         console.log(data);
         showData(data, 'Berlin, DE', 'Germeny');
 
