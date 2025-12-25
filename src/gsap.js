@@ -77,7 +77,7 @@ menu.addEventListener('mouseleave', () => {
     })
 });
 menu.addEventListener('click', () => {
-    gsap.set('#detailedSection', { visibility: 'visible', opacity: 1 });
+    gsap.set('#detailedSection', { visibility: 'visible', opacity: 1, y: '50%' });
     gsap.fromTo('#detailedSection', {
         y: '50%',
         duration: 0.3,
@@ -116,12 +116,37 @@ document.querySelector('#gear-icon').addEventListener('mouseenter', () => {
         duration: 0.5,
         opacity: 1,
         x: -1,
-    }) 
+    })
 }); document.querySelector('#gear-icon').addEventListener('mouseleave', () => {
     gsap.to('#gear-icon', {
         rotate: '0deg',
         duration: 0.5,
         opacity: 0.25,
         x: 0,
-    }) 
-}); 
+    })
+});
+universalControl.style.display = 'none';
+document.querySelector('#gear-icon').addEventListener('click', () => {
+    if (universalControl.style.display == 'none') {
+        universalControl.style.display = 'flex';
+        gsap.fromTo(universalControl, {
+            // y: 0,
+            duration: 0.5,
+            ease: "bounce.out",
+            opacity: 0,
+        }, {
+            opacity: 1,
+        })
+    }
+    else {
+        gsap.to(universalControl, {
+            // y: -20,
+            duration: 0.3,
+            ease: "power1.inOut",
+            opacity: 0,
+        })
+        setTimeout(() => {
+        universalControl.style.display = 'none';
+        }, 300);
+    }
+});

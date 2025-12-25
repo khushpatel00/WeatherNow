@@ -20,7 +20,13 @@ timezone = document.querySelector('#timezone');
 menu = document.querySelector('#menu');
 closeIcon = document.querySelector('#close-icon');
 timezoneAbbreviation = document.querySelector('#timezoneAbbreviation')
+universalControl = document.querySelector('#universal-control');
+universalControlRadios = document.querySelectorAll('input[name="universalweather"]');
+universalFetchData = null;
 timeclock = null;
+showerOverride = false;
+rainOverride = false;
+snowfallOverride = false;
 
 // function updateTime() {
 //     const now = new Date("GMT+1");
@@ -38,6 +44,19 @@ gmtinseconds = gmt.split('+').pop().split(':')
 console.log(gmtinseconds[0] * 60 + gmtinseconds[1]);
 
 
+universalControlRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        if (radio.checked) {
+            showerOverride = false;
+            rainOverride = false;
+            snowfallOverride = false;
+            if (radio.nextElementSibling.innerText == 'Shower') showerOverride = true;
+            if (radio.nextElementSibling.innerText == 'Rain') rainOverride = true;
+            if (radio.nextElementSibling.innerText == 'Snowfall') snowfallOverride = true;
+            addAliveMotion();
+        }
+    })
+});
 
 
 
@@ -63,7 +82,7 @@ function updateTime(timezone) {
     try {
         const data = await fetchWeather(); // default
 
-        
+
         console.log(data);
         showData(data, 'Berlin, DE', 'Germeny');
 
@@ -74,7 +93,7 @@ function updateTime(timezone) {
 })()
 function showData(fetchedData, cityName = '', countryData = '') {
     console.log(fetchedData);
-
+    universalFetchData = fetchedData;
     temperature.innerHTML = `${fetchedData.current.temperature_2m || 'undefined'} <span class="text-4xl font-bold -ms-2">${fetchedData.current_units.temperature_2m}</span>`;
     apperantTemperature.innerHTML = `<span class="text-xl content">apperant: </span>${fetchedData.current.apparent_temperature || 'undefined'}${fetchedData.current_units.apparent_temperature}`;
     windSpeed.innerHTML = `${fetchedData.current.wind_speed_10m} ${fetchedData.current_units.wind_speed_10m}`;
@@ -107,16 +126,8 @@ function showData(fetchedData, cityName = '', countryData = '') {
     }
     timezone.innerHTML = fetchedData.timezone;
     timezoneAbbreviation.innerHTML = fetchedData.timezone_abbreviation;
-    
-    if (fetchedData.current.rain) {
-        document.querySelector('video#activestate').src = 'src/images/rain.mp4';
-    }
-    if (fetchedData.current.showers) {
-        document.querySelector('video#activestate').src = 'src/images/water_droplets.mp4';
-    }
-    if (fetchedData.current.snowfall) {
-        document.querySelector('video#activestate').src = 'src/images/snowfall.mp4';
-    }
+
+    addAliveMotion(fetchedData);
 
     weatherDescription.innerHTML = `${weathercode(fetchedData.current.weather_code)}`
     clearInterval(timeclock);
@@ -154,4 +165,15 @@ async function fetchWeatherandShow(lat, lon, cityName, countryData = '') {
     fetchedData = await fetchWeather(lat, lon);
     document.querySelector('#citylist-parent').classList.add('hidden');
     showData(fetchedData, cityName, countryData);
+}
+function addAliveMotion(fetchedData = universalFetchData){
+    if (fetchedData.current.rain || rainOverride) {
+        document.querySelector('video#activestate').src = 'src/images/rain.mp4';
+    }
+    if (fetchedData.current.showers || showerOverride) {
+        document.querySelector('video#activestate').src = 'src/images/water_droplets.mp4';
+    }
+    if (fetchedData.current.snowfall || snowfallOverride) {
+        document.querySelector('video#activestate').src = 'src/images/snowfall.mp4';
+    }
 }

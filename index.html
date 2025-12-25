@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherNow</title>
-<!--    <link rel="shortcut icon" href="src/images/favicon.png" type="image/x-icon">-->
+    <!--    <link rel="shortcut icon" href="src/images/favicon.png" type="image/x-icon">-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,19 +18,35 @@
 </head>
 
 <body class="bg-white dark:bg-black overflow-hidden">
-    
-    <div class="absolute top-0 left-0 mt-2.5 ms-2.5 z-50 content-notranslate"><div id="gear-icon" class="opacity-25"><i class="ph-thin ph-gear-fine text-3xl duration-1000 text-black dark:text-white"></i></div></div>
-    <div class="flex flex-wrap absolute top-0 translate-1/6 translate-x-1/12 duration-100 dark:bg-neutral-800/50 bg-neutral-300/50 p-3 px-5 rounded-lg left-0 z-50 text-black dark:text-white">
-        <p class="basis-full">Shower</p>
-        <p class="basis-full">Rain</p>
-        <p class="basis-full">Snowfall</p>
-        
+
+    <div class="absolute top-0 left-0 mt-2.5 ms-2.5 z-50 content-notranslate">
+        <div id="gear-icon" class="opacity-25"><i
+                class="ph-thin ph-gear-fine text-3xl duration-1000 text-black dark:text-white"></i></div>
     </div>
-    
-    
+    <div class="flex flex-wrap absolute top-0 translate-1/4 translate-x-1/12 duration-100 dark:bg-neutral-800/50 bg-neutral-300/50 p-3 px-5 rounded-lg left-0 z-50 text-black dark:text-white"
+        id="universal-control">
+        <p class="basis-full font-bold text-center mb-2.5">Weather Effects Override</p>
+        <div class="flex basis-full justify-start"> <input type="radio" name="universalweather" checked="checked" id="">
+            <p class="ps-3">No Override</p>
+        </div>
+        <div class="flex basis-full justify-start"> <input type="radio" name="universalweather" id="">
+            <p class="ps-3">Shower</p>
+        </div>
+        <div class="flex basis-full justify-start"> <input type="radio" name="universalweather" id="">
+            <p class="ps-3">Rain</p>
+        </div>
+        <div class="flex basis-full justify-start"> <input type="radio" name="universalweather" id="">
+            <p class="ps-3">Snowfall</p>
+        </div>
+
+    </div>
+
+
     <div class="flex absolute top-0 left-0 duration-100 blur-md">
-        <div class="bg-rose-200 dark:bg-black  h-screen duration-500 w-screen xl:w-[60vw] lg:w-[60vw]" id="primary-bg"></div>
-        <div class="bg-pink-200 dark:bg-black  h-screen duration-100 w-0 xl:w-[40vw] lg:w-[40vw] " id="secondary-bg"></div>
+        <div class="bg-rose-200 dark:bg-black  h-screen duration-500 w-screen xl:w-[60vw] lg:w-[60vw]" id="primary-bg">
+        </div>
+        <div class="bg-pink-200 dark:bg-black  h-screen duration-100 w-0 xl:w-[40vw] lg:w-[40vw] " id="secondary-bg">
+        </div>
     </div>
     <div class="z-30 absolute top-0 left-0 h-screen w-screen bg-black/20"></div>
 
@@ -46,9 +62,9 @@
         class="absolute top-0 left-0 w-screen xl:w-[60vw] lg:w-[60vw] h-screen flex justify-center items-center z-40">
         <div class="flex justify-center flex-wrap">
             <div class="flex justify-center items-center relative basis-full">
-                <p class="text-2xl font-bold text-black/50">City:</p>
+                <p class="text-2xl font-bold text-black/50 dark:text-white/50">City:</p>
                 <div class="relative z-20">
-                    <label for="citylist-input"></label> 
+                    <label for="citylist-input"></label>
                     <input type="text" class="bg-white/50 rounded-lg p-1 py-2 mx-3" id="citylist-input" />
                     <div id="citylist-parent"
                         class="hidden absolute bg-white/80 backdrop-blur-xs rounded-lg py-2 top-0 left-0 translate-y-1/5 w-full h-auto">
@@ -58,7 +74,10 @@
             </div>
             <div class="bg-white/70 backdrop-blur-md relative shadow-2xl rounded-2xl w-[90vw] xl:w-[55vw] lg:w-[55vw]  max-w-4xl h-[70vh] flex flex-col p-6 duration-500 translate-y-10"
                 id="weather-card">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 "><div class="text-3xl relative inline-flex gap-[3px] cursor-pointer w-auto h-5 items-center" id="menu"><span></span><span></span><span></span></div></div>
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 ">
+                    <div class="text-3xl relative inline-flex gap-[3px] cursor-pointer w-auto h-5 items-center"
+                        id="menu"><span></span><span></span><span></span></div>
+                </div>
                 <div class="flex justify-between items-center mb-4">
                     <div>
                         <h2 class="text-3xl font-semibold text-gray-800 content" id="location">Berlin, DE</h2>
@@ -66,10 +85,12 @@
                         <p class="text-gray-600 content" id="date">Friday, 12 July 2024</p>
                     </div>
                     <div class="text-right">
-                        <h3 class="text-5xl font-bold text-gray-800 flex items-start justify-end gap-2 content" id="temperature">22°C</h3>
-                        <h3 class="text-3xl font-light text-gray-800 flex items-start justify-end gap-2 content" id="apperant-temperature"><span class="text-xl content">apperant: </span> 22°C</h3>
+                        <h3 class="text-5xl font-bold text-gray-800 flex items-start justify-end gap-2 content"
+                            id="temperature">22°C</h3>
+                        <h3 class="text-3xl font-light text-gray-800 flex items-start justify-end gap-2 content"
+                            id="apperant-temperature"><span class="text-xl content">apperant: </span> 22°C</h3>
                         <p class="text-gray-600 content" id="weather-description">Rainy</p>
-                    </div> 
+                    </div>
                 </div>
                 <div class="flex justify-between items-center mt-auto">
                     <div class="text-center">
@@ -96,10 +117,12 @@
 
     </section>
 
-    <section class="absolute top-0 right-0 w-screen xl:w-[40vw] lg:w-[40vw] h-screen flex justify-center items-center z-[60]"
+    <section
+        class="absolute duration-300 top-0 right-0 w-screen xl:w-[40vw] lg:w-[40vw] h-screen flex justify-center items-center z-[60]"
         id="detailedSection">
-        <div class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-11/12 max-w-4xl h-[95vh] flex flex-wrap p-6 px-4  duration-500 justify-evenly content-start items-center">
- 
+        <div
+            class="bg-white/20 backdrop-blur-sm relative shadow-2xl rounded-2xl w-11/12 max-w-4xl h-[95vh] flex flex-wrap p-6 px-4  duration-500 justify-evenly content-start items-center">
+
             <div class="absolute top-0 left-0 m-3.5 mt-4 cursor-pointer my-2 w-5 h-5">
                 <div class="relative w-5 h-5 mt-4 -translate-y-1/2" id="close-icon">
                     <span class="line1"></span>
@@ -130,7 +153,7 @@
                 <p class="basis-full text-center content" id="elevation"></p>
                 <span class="content">Altitude</span>
             </div>
-            <div    
+            <div
                 class="bg-white/30 my-3  px-5 py-3 rounded-lg flex flex-wrap justify-center items-center max-w-fit max-h-fit">
                 <div class=" basis-full text-center mb-3 text-3xl content">
                     <i class="ph-thin ph-sun" id="daynighttime"></i>
