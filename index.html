@@ -26,7 +26,7 @@
     <div class="flex flex-wrap absolute top-0 translate-1/4 translate-x-1/12 duration-100 dark:bg-neutral-800/50 bg-neutral-300/50 p-3 px-5 rounded-lg left-0 z-50 text-black dark:text-white"
         id="universal-control">
         <p class="basis-full font-bold text-center mb-2.5">Weather Effects Override</p>
-        <div class="flex basis-full justify-start"> <input type="radio" name="universalweather" checked="checked" id="">
+        <div class="flex basis-full justify-start"> <input type="radio" name="universalClear" id="">
             <p class="ps-3">No Override</p>
         </div>
         <div class="flex basis-full justify-start"> <input type="radio" name="universalweather" id="">
@@ -37,6 +37,12 @@
         </div>
         <div class="flex basis-full justify-start"> <input type="radio" name="universalweather" id="">
             <p class="ps-3">Snowfall</p>
+        </div>
+        <div class="flex basis-full justify-start"> <input type="radio" name="universalDayNight" id="">
+            <p class="ps-3">Day</p>
+        </div>
+        <div class="flex basis-full justify-start"> <input type="radio" name="universalDayNight" id="">
+            <p class="ps-3">Night</p>
         </div>
 
     </div>
@@ -55,8 +61,8 @@
     </div>
 
     <!-- <img autoplay loop muted controls class="weather-effect fog absolute top-0 left-0 w-screen h-screen z-50" src="src/images/Fog.gif" id="activestate"> </img> -->
-    <video autoplay loop muted class="weather-effect fog absolute top-0 left-0 bg-neutral-900 w-screen h-screen z-50"
-        src="" id="activestate"> </video>
+    <video autoplay loop muted class="weather-effect fog absolute top-0 left-0 w-screen h-screen z-50 duration-700"
+        src="" id="activestate" style="opacity: 1;"> </video>
 
     <section
         class="absolute top-0 left-0 w-screen xl:w-[60vw] lg:w-[60vw] h-screen flex justify-center items-center z-40">

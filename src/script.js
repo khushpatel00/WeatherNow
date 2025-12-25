@@ -22,11 +22,14 @@ closeIcon = document.querySelector('#close-icon');
 timezoneAbbreviation = document.querySelector('#timezoneAbbreviation')
 universalControl = document.querySelector('#universal-control');
 universalControlRadios = document.querySelectorAll('input[name="universalweather"]');
+universalControlRadiosDayNight = document.querySelectorAll('input[name="universalDayNight"]');
+universalClear = document.querySelector('input[name="universalClear"]')
 universalFetchData = null;
 timeclock = null;
 showerOverride = false;
 rainOverride = false;
 snowfallOverride = false;
+dayOverride = true;
 
 // function updateTime() {
 //     const now = new Date("GMT+1");
@@ -53,7 +56,39 @@ universalControlRadios.forEach(radio => {
             if (radio.nextElementSibling.innerText == 'Shower') showerOverride = true;
             if (radio.nextElementSibling.innerText == 'Rain') rainOverride = true;
             if (radio.nextElementSibling.innerText == 'Snowfall') snowfallOverride = true;
-            addAliveMotion();
+            if (showerOverride || rainOverride || snowfallOverride) addAliveMotion();
+            else addAliveMotion(universalFetchData, false);
+        }
+    })
+});
+universalClear.addEventListener('change', () => {
+    if (universalClear.checked) {
+        showerOverride = false;
+        dayOverride = false;
+        rainOverride = false;
+        snowfallOverride = false;
+        setTimeout(() => {
+            universalClear.checked = false;
+        }, 500);
+        universalControlRadios.forEach(radio => {
+            radio.checked = false;
+        });
+        universalControlRadiosDayNight.forEach(radio => {
+            radio.checked = false;
+        });
+        addAliveMotion(universalFetchData, false);
+    }
+});
+
+universalControlRadiosDayNight.forEach(radio => {
+    radio.addEventListener('change', () => {
+        if (radio.checked) {
+            dayOverride = false;
+            if (radio.nextElementSibling.innerText == 'Day') dayOverride = true;
+            if (radio.nextElementSibling.innerText == 'Night') dayOverride = false;
+            if (dayOverride) document.querySelector('html').classList = '';
+            else document.querySelector('html').classList = 'dark';
+
         }
     })
 });
@@ -166,14 +201,35 @@ async function fetchWeatherandShow(lat, lon, cityName, countryData = '') {
     document.querySelector('#citylist-parent').classList.add('hidden');
     showData(fetchedData, cityName, countryData);
 }
-function addAliveMotion(fetchedData = universalFetchData){
-    if (fetchedData.current.rain || rainOverride) {
-        document.querySelector('video#activestate').src = 'src/images/rain.mp4';
-    }
-    if (fetchedData.current.showers || showerOverride) {
-        document.querySelector('video#activestate').src = 'src/images/water_droplets.mp4';
-    }
-    if (fetchedData.current.snowfall || snowfallOverride) {
-        document.querySelector('video#activestate').src = 'src/images/snowfall.mp4';
+function addAliveMotion(fetchedData = universalFetchData, isOverride = true) {
+    if (isOverride) {
+
+        if (fetchedData.current.rain || rainOverride) {
+            document.querySelector('video#activestate').style.opacity = 0;
+            setTimeout(() => {
+                document.querySelector('video#activestate').src = 'src/images/rain.mp4';
+                document.querySelector('video#activestate').style.opacity = 1;
+            }, 1000);
+        }
+        if (fetchedData.current.showers || showerOverride) {
+            document.querySelector('video#activestate').style.opacity = 0;
+            setTimeout(() => {
+                document.querySelector('video#activestate').src = 'src/images/water_droplets.mp4';
+                document.querySelector('video#activestate').style.opacity = 1;
+            }, 1000);
+        }
+        if (fetchedData.current.snowfall || snowfallOverride) {
+            document.querySelector('video#activestate').style.opacity = 0;
+            setTimeout(() => {
+                document.querySelector('video#activestate').src = 'src/images/snowfall.mp4';
+                document.querySelector('video#activestate').style.opacity = 1;
+            }, 1000);
+        }
+    } else {
+        document.querySelector('video#activestate').style.opacity = 0;
+        setTimeout(() => {
+            document.querySelector('video#activestate').src = '';
+        }, 1000);
+        fetchedData.current.is_day ? document.querySelector('html').classList = '' : document.querySelector('html').classList = 'dark';
     }
 }
