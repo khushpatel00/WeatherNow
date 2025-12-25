@@ -5,7 +5,7 @@ else {
     gsap.set('#detailedSection', { visibility: 'visible', opacity: 1 })
 }
 window.addEventListener('resize', () => {
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
     if (window.innerWidth < 1024) {
         gsap.set('#detailedSection', { visibility: 'hidden', opacity: 0 })
     }
@@ -13,26 +13,37 @@ window.addEventListener('resize', () => {
         gsap.set('#detailedSection', { visibility: 'visible', opacity: 1 })
     }
 })
-
-gsap.from('#intro', {
+intro = document.querySelector('#intro');
+introText = intro.innerHTML.split('');
+intro.innerHTML = '';
+introText.forEach(char => {
+    intro.innerHTML += `<div>${char}</div>`
+})
+gsap.from('#intro div', {
     opacity: 0,
     delay: 0.2,
-    duration: 0.5,
-    y: -20,
-    scale: 0.9,
+    duration: 1,
+    y: -30,
+    // scale: 0.9,
+    rotate: '-10deg',
+    ease: "power2.out",
+    stagger: 0.025,
 })
-gsap.to('#intro', {
+gsap.to('#intro div', {
     opacity: 0,
     duration: 0.5,
-    delay: 0.7,
-    y: 20,
-    scale: 0.9,
+    delay: 1.1,
+    y: 30,
+    rotate: '10deg',
+    ease: "power2.in",
+    // scale: 0.9,
+    stagger: 0.025,
 });
 
 gsap.from('section', {
     opacity: 0,
     duration: 0.5,
-    delay: 1.5,
+    delay: 2,
     y: 50,
     stagger: 0.1,
 })
